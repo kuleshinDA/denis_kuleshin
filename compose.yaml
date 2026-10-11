@@ -1,0 +1,32 @@
+name: denis_kuleshin
+services:
+  db:
+    image: postgres:16.8
+    environment:
+      POSTGRES_DB: denis_kuleshin
+      POSTGRES_USER: denis_kuleshin
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U denis_kuleshin -d denis_kuleshin"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+  api:
+    build: .
+    environment:
+      PGHOST: db
+      PGDATABASE: denis_kuleshin
+      PGUSER: denis_kuleshin
+      PGPASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in .env}
+    ports:
+      - "127.0.0.1:${APP_PORT:-8082}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./results:/srv/results
+volumes:
+  pgdata:

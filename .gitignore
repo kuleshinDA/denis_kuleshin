@@ -1,0 +1,11 @@
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
+results/*.csv
+results/*.json
+results/*.txt
+results/*.sha256
+screenshots/*
+!results/.gitkeep
+!screenshots/.gitkeep
