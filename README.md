@@ -10,11 +10,10 @@
 
 Ubuntu в WSL и работающий Docker с Docker Compose. Подходит Docker Engine,
 установленный внутри Ubuntu, либо Docker Desktop с Linux containers и интеграцией
-Ubuntu. Если Engine в Ubuntu уже работает, интеграция Desktop не обязательна.
+Ubuntu.
 Для всех сравниваемых замеров используйте один и тот же движок и его ресурсы.
 В контейнерах: Python 3.12.10, FastAPI 0.115.12, PostgreSQL 16.8, Psycopg 3.2.6.
-Остальные зависимости закреплены в requirements.txt. Новые версии во время ДЗ 1–3
-не подставляйте: это изменит условия сравнения.
+Остальные зависимости закреплены в requirements.txt. 
 
 ## Установка и запуск
 
